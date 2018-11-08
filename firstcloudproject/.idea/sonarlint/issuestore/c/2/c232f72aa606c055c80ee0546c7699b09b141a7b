@@ -1,0 +1,5 @@
+
+Xsquid:S3457'"AFormat specifiers should be used instead of string concatenation.(â“•€
+dsquid:S4488"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Û•ôûÿÿÿÿ
+Nsquid:S2629'"7Use the built-in formatting to construct this argument.(â“•€
+nsquid:CommentedOutCodeLine""<This block of commented-out lines of code should be removed.(ñ¥ùšøÿÿÿÿ8·ñ—Şî,

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="aclient" />
+        <module name="config" />
+        <module name="eurekamodule" />
+        <module name="firstcloudproject" />
+        <module name="firstmodule" />
+        <module name="otherserver" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="aclient" target="1.8" />
+      <module name="config" target="1.8" />
+      <module name="eurekamodule" target="1.8" />
+      <module name="firstcloudproject" target="1.8" />
+      <module name="firstmodule" target="1.8" />
+      <module name="otherserver" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
