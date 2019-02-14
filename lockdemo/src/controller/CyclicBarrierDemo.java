@@ -42,15 +42,13 @@ public class CyclicBarrierDemo {
     public void print(){
         System.err.println("123");
     }
-    public static void main(String[] args) throws IllegalAccessException, InstantiationException {
+    public static void main(String[] args) {
 
-//        CyclicBarrier cyclicBarrier = new CyclicBarrier(3);
-//        ExecutorService executorService = Executors.newFixedThreadPool(3);
-//        executorService.execute(new Runner(cyclicBarrier,"zhangsan"));
-//        executorService.execute(new Runner(cyclicBarrier,"lisi"));
-//        executorService.execute(new Runner(cyclicBarrier,"wangwu"));
-        CyclicBarrierDemo c = CyclicBarrierDemo.class.newInstance();
-        c.print();
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(3);
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        executorService.execute(new Runner(cyclicBarrier,"zhangsan"));
+        executorService.execute(new Runner(cyclicBarrier,"lisi"));
+        executorService.execute(new Runner(cyclicBarrier,"wangwu"));
 
     }
 }
