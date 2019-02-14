@@ -3,7 +3,7 @@ package controller;
 import java.util.concurrent.*;
 
 /**
- * java类作用描述
+ * future callable演示
  *
  * @author yk
  * @since 2019/2/12$ 16:47$

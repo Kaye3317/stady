@@ -6,7 +6,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * java类作用描述
+ * CyclicBarrier表示当所有线程都准备好了就会一起执行
  *
  * @author yk
  * @since 2019/2/12$ 16:29$
