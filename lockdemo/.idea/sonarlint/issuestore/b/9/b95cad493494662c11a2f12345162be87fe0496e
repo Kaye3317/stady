@@ -1,0 +1,37 @@
+
+Jsquid:S1602,",Remove useless curly braces around statement(¥—ığ8û’ë¥-
+[
+squid:S106*"9Replace this use of System.out or System.err by a logger.(»¼Íæùÿÿÿÿ8û’ë¥-
+¢squid:S1319f"The type of the "map" object should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentHashMap".(é¶—Ãşÿÿÿÿ8ØïØ¥-
+[
+squid:S106"9Replace this use of System.out or System.err by a logger.(»¼Íæùÿÿÿÿ8û’ë¥-
+Jsquid:S1602#",Remove useless curly braces around statement(¥—ığ8û’ë¥-
+Jsquid:S1602",Remove useless curly braces around statement(¥—ığ8Í¹é¥-
+Jsquid:S1602",Remove useless curly braces around statement(¥—ığ8û’ë¥-
+[
+squid:S106!"9Replace this use of System.out or System.err by a logger.(»¼Íæùÿÿÿÿ8û’ë¥-
+[
+squid:S106'"9Replace this use of System.out or System.err by a logger.(»¼Íæùÿÿÿÿ8û’ë¥-
+Wsquid:S2864:"4Iterate over the "entrySet" instead of the "keySet".(İÿªúÿÿÿÿ8ø±á¥-
+[
+squid:S1060"9Replace this use of System.out or System.err by a logger.(»¼Íæùÿÿÿÿ8û’ë¥-
+V
+squid:S106;"9Replace this use of System.out or System.err by a logger.(ìú‘â8àÿà¥-
+Jsquid:S1602&",Remove useless curly braces around statement(¥—ığ8û’ë¥-
+[
+squid:S106$"9Replace this use of System.out or System.err by a logger.(»¼Íæùÿÿÿÿ8û’ë¥-
+Jsquid:S1602 ",Remove useless curly braces around statement(¥—ığ8û’ë¥-
+Jsquid:S1602/",Remove useless curly braces around statement(¥—ığ8û’ë¥-
+Jsquid:S1602)",Remove useless curly braces around statement(¥—ığ8û’ë¥-
+V
+squid:S1068"9Replace this use of System.out or System.err by a logger.(åçşæ8Â´Ù¥-
+[
+squid:S106-"9Replace this use of System.out or System.err by a logger.(»¼Íæùÿÿÿÿ8û’ë¥-
+Jsquid:S1602",Remove useless curly braces around statement(¥—ığ8û’ë¥-
+ squid:S1319b"The return type of this method should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentHashMap".(ˆ´Œî8ØïØ¥-
+Fsquid:S11486"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¯Àı¥-
+[
+squid:S106"9Replace this use of System.out or System.err by a logger.(»¼Íæùÿÿÿÿ8ÿ’é¥-
+[
+squid:S106"9Replace this use of System.out or System.err by a logger.(»¼Íæùÿÿÿÿ8û’ë¥-
+dsquid:S21425"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€8¯Àı¥-

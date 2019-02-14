@@ -1,0 +1,10 @@
+
+bsquid:S2184 "FCast one of the operands of this multiplication operation to a "long".(«ÔŒüÿÿÿÿ
+?squid:S1148$"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+O
+squid:S106&"9Replace this use of System.out or System.err by a logger.(ˆ Íü
+T
+squid:S106!"9Replace this use of System.out or System.err by a logger.(çÇ­¬ÿÿÿÿÿ
+isquid:CommentedOutCodeLine/"<This block of commented-out lines of code should be removed.(§ÑÅÎ8®œ§¦-
+[
+squid:S106+"9Replace this use of System.out or System.err by a logger.(¦¥»­ıÿÿÿÿ8®è½§-
