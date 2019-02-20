@@ -19,29 +19,30 @@ public class DiscardServerHandler extends ChannelHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 //        try {
-            //一些业务处理逻辑
-            ByteBuf buf = (ByteBuf) msg;
+        //一些业务处理逻辑
+        ByteBuf buf = (ByteBuf) msg;
 
-            byte[] data = new byte[buf.readableBytes()];
-            //把数据从buffer读到data数组
-            buf.readBytes(data);
-            String s = new String(data, "utf-8");
-            System.err.println("server: " + s);
+        byte[] data = new byte[buf.readableBytes()];
+        //把数据从buffer读到data数组
+        buf.readBytes(data);
+        String s = new String(data, "utf-8");
+        System.err.println("server: " + s);
 
-            //给client发送消息
-            String response = "888";
-            //ChannelHandlerContext直接就可以写不需要获取通道
-            //由于write会自动释放msg所以不需要我们手动释放
-            //ctx.writeAndFlush() 会返回一个ChannelFuture
-            ctx.writeAndFlush(Unpooled.copiedBuffer(response.getBytes()))
-                    //客户端响应完了就会主动断开连接
-                    .addListener(ChannelFutureListener.CLOSE);
+        //给client发送消息
+        String response = "888" + s;
+        //ChannelHandlerContext直接就可以写不需要获取通道
+        //由于write会自动释放msg所以不需要我们手动释放
+        //ctx.writeAndFlush() 会返回一个ChannelFuture
+        //只能写buffer类型的数据，可以通过适配器传对象或者字符串；
+        ctx.writeAndFlush(Unpooled.copiedBuffer(response.getBytes()))
+                //客户端响应完了就会主动断开连接
+                .addListener(ChannelFutureListener.CLOSE);
 
 //        } finally {
-            //业务处理完了后一定要释放数据，msg一般是netty里的ByteBuf
-            //((ByteBuf) msg).release()
-            //ReferenceCountUtil是释放计数对象的工具
-            //ReferenceCountUtil.release(msg);
+        //业务处理完了后一定要释放数据，msg一般是netty里的ByteBuf
+        //((ByteBuf) msg).release()
+        //ReferenceCountUtil是释放计数对象的工具
+        //ReferenceCountUtil.release(msg);
 //        }
     }
 

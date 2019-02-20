@@ -37,7 +37,7 @@ public class Client {
             //为Future，是因为获取到的是异步的通道
             ChannelFuture f = b.connect("127.0.0.1", 9998).sync();
 
-            //ChannelFuture需要去获取它的通道才能写数据
+            //ChannelFuture需要去获取它的通道才能写数据,只能写buffer类型的数据，可以通过适配器传对象或者字符串；
             f.channel().write(Unpooled.copiedBuffer("444".getBytes()));
             // f.channel().write(Unpooled.copiedBuffer("555".getBytes()));
             // f.channel().write(Unpooled.copiedBuffer("666".getBytes()));
