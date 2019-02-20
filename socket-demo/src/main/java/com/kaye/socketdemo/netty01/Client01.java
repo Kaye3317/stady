@@ -10,12 +10,12 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
 /**
- * netty client端
+ * netty client端 演示多个client通过不同端口发数据给server
  *
  * @author yk
  * @since 2019/2/19$ 11:00$
  */
-public class Client {
+public class Client01 {
 
     public static void main(String[] args) throws Exception {
         //client只需要一个线程组  因为它不需要接收
@@ -35,21 +35,14 @@ public class Client {
                         }
                     });
             //为Future，是因为获取到的是异步的通道
-            ChannelFuture f = b.connect("127.0.0.1", 9998).sync();
-            ChannelFuture f1 = b.connect("127.0.0.1", 9997).sync();
+            ChannelFuture f = b.connect("127.0.0.1", 9997).sync();
 
             //ChannelFuture需要去获取它的通道才能写数据,只能写buffer类型的数据，可以通过适配器传对象或者字符串；
-            f.channel().write(Unpooled.copiedBuffer("client--1".getBytes()));
-            // f.channel().write(Unpooled.copiedBuffer("555".getBytes()));
-            // f.channel().write(Unpooled.copiedBuffer("666".getBytes()));
+            f.channel().write(Unpooled.copiedBuffer("client01".getBytes()));
             f.channel().flush();
 
-            //获取到通道去传数据
-            //Unpooled是nio辅助工具类 返回的都是一个buffer
-            f1.channel().writeAndFlush(Unpooled.copiedBuffer("client--2".getBytes()));
 
             f.channel().closeFuture().sync();
-            f1.channel().closeFuture().sync();
         } finally {
             worker.shutdownGracefully();
         }

@@ -74,12 +74,14 @@ public class Server {
                     .option(ChannelOption.SO_RCVBUF, 32 * 1024);
 
 
-            //绑定端口进行监听，看有没有客户端连接进来
+            //绑定端口进行监听，看有没有客户端连接进来可以绑定多个端口接受数据
             //使用.sync()是因为它是异步监听
             ChannelFuture f = b.bind(9998).sync();
+            ChannelFuture f1 = b.bind(9997).sync();
 
             //相当于在main方法中阻塞一下
             f.channel().closeFuture().sync();
+            f1.channel().closeFuture().sync();
         } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
