@@ -1,0 +1,8 @@
+关于netty重点！！！
+工作中实用技能--netty编解码技术
+说白了就是java的序列化技术。
+主流的编解码框架：
+1.JBoss的Marshalling包
+2.Google的Protobuf
+3.基于Protobuf的Kyro
+4.MessagePack框架
