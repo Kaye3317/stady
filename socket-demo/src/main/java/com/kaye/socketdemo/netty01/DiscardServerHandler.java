@@ -36,21 +36,20 @@ public class DiscardServerHandler extends ChannelHandlerAdapter {
         //ctx.writeAndFlush() 会返回一个ChannelFuture
         //只能写buffer类型的数据，可以通过适配器传对象或者字符串；
         ctx.writeAndFlush(Unpooled.copiedBuffer(response.getBytes()))
-        //客户端响应完了就会主动断开连接，关闭通道一定是server来关闭
-        /** writeAndFlush返回一个Future 可以使用Future添加一个监听
-         * 什么时候client接受完了数据就可以关闭client了
-         * 也可以简写 向下面一样
-            final ChannelFuture f = ctx.writeAndFlush(time);
-            f.addListener(new ChannelFutureListener() {
-                @Override
-                public void operationComplete(ChannelFuture future) {
-                    assert f == future;
-                    ctx.close();
+                //客户端响应完了就会主动断开连接，关闭通道一定是server来关闭
+                /** writeAndFlush返回一个Future 可以使用Future添加一个监听
+                 * 什么时候client接受完了数据就可以关闭client了
+                 * 也可以简写 向下面一样
+                 final ChannelFuture f = ctx.writeAndFlush(time);
+                 f.addListener(new ChannelFutureListener() {
+                @Override public void operationComplete(ChannelFuture future) {
+                assert f == future;
+                ctx.close();
                 }
-            })
-         */
-        //简写方法 用了这个相当于是个短链接，不用相当于是个长连接
-        .addListener(ChannelFutureListener.CLOSE);
+                })
+                 */
+                //简写方法 用了这个相当于是个短链接，不用相当于是个长连接
+                .addListener(ChannelFutureListener.CLOSE);
 
         //} finally {
         //业务处理完了后一定要释放数据，msg一般是netty里的ByteBuf
