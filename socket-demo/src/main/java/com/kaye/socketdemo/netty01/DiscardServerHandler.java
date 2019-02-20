@@ -2,6 +2,7 @@ package com.kaye.socketdemo.netty01;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
@@ -35,8 +36,21 @@ public class DiscardServerHandler extends ChannelHandlerAdapter {
         //ctx.writeAndFlush() 会返回一个ChannelFuture
         //只能写buffer类型的数据，可以通过适配器传对象或者字符串；
         ctx.writeAndFlush(Unpooled.copiedBuffer(response.getBytes()))
-                //客户端响应完了就会主动断开连接
-                .addListener(ChannelFutureListener.CLOSE);
+        //客户端响应完了就会主动断开连接
+        /** writeAndFlush返回一个Future 可以使用Future添加一个监听
+         * 什么时候client写完了就可以关闭client了
+         * 也可以简写 向下面一样
+            final ChannelFuture f = ctx.writeAndFlush(time);
+            f.addListener(new ChannelFutureListener() {
+                @Override
+                public void operationComplete(ChannelFuture future) {
+                    assert f == future;
+                    ctx.close();
+                }
+            })
+         */
+        //简写方法
+        .addListener(ChannelFutureListener.CLOSE);
 
 //        } finally {
         //业务处理完了后一定要释放数据，msg一般是netty里的ByteBuf
