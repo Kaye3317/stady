@@ -14,6 +14,11 @@ import io.netty.channel.ChannelHandlerContext;
  * @since 2019/2/19$ 11:29$
  */
 public class DiscardServerHandler extends ChannelHandlerAdapter {
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        System.err.println("server端联通");
+        ctx.writeAndFlush("server端联通了，发了一些数据到client端$_");
+    }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {

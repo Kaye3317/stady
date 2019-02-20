@@ -13,6 +13,17 @@ import io.netty.util.ReferenceCountUtil;
  * @since 2019/2/19$ 11:50$
  */
 public class DiscardClientHandler extends ChannelHandlerAdapter {
+    /**
+     * 当client端管道联通时可以做的一些操作
+     *
+     * @param ctx
+     * @throws Exception
+     */
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        System.err.println("client端联通");
+        ctx.writeAndFlush("client端联通了，发了一些数据到server端$_");
+    }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
