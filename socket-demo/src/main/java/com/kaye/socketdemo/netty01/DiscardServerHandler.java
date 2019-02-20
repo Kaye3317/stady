@@ -38,7 +38,7 @@ public class DiscardServerHandler extends ChannelHandlerAdapter {
         ctx.writeAndFlush(Unpooled.copiedBuffer(response.getBytes()))
         //客户端响应完了就会主动断开连接
         /** writeAndFlush返回一个Future 可以使用Future添加一个监听
-         * 什么时候client写完了就可以关闭client了
+         * 什么时候client接受完了数据就可以关闭client了
          * 也可以简写 向下面一样
             final ChannelFuture f = ctx.writeAndFlush(time);
             f.addListener(new ChannelFutureListener() {
