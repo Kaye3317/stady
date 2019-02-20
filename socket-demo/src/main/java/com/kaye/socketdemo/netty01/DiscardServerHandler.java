@@ -19,7 +19,7 @@ public class DiscardServerHandler extends ChannelHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-//        try {
+        //try {
         //一些业务处理逻辑
         ByteBuf buf = (ByteBuf) msg;
 
@@ -52,12 +52,12 @@ public class DiscardServerHandler extends ChannelHandlerAdapter {
         //简写方法 用了这个相当于是个短链接，不用相当于是个长连接
         .addListener(ChannelFutureListener.CLOSE);
 
-//        } finally {
+        //} finally {
         //业务处理完了后一定要释放数据，msg一般是netty里的ByteBuf
         //((ByteBuf) msg).release()
         //ReferenceCountUtil是释放计数对象的工具
         //ReferenceCountUtil.release(msg);
-//        }
+        //}
     }
 
     @Override
