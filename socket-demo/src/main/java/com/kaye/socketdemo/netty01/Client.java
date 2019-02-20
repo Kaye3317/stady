@@ -21,6 +21,7 @@ public class Client {
         //client只需要一个线程组  因为它不需要接收
         EventLoopGroup worker = new NioEventLoopGroup();
         try {
+            //client用的是Bootstrap,server用的是ServerBootstrap
             Bootstrap b = new Bootstrap();
             b.group(worker)
                     //由于演示的是TCP所以客户端使用的是NioSocketChannel
@@ -34,7 +35,7 @@ public class Client {
                         }
                     });
             //为Future，是因为获取到的是异步的通道
-            ChannelFuture f = b.connect("127.0.0.1",9998).sync();
+            ChannelFuture f = b.connect("127.0.0.1", 9998).sync();
 
             //ChannelFuture需要去获取它的通道才能写数据
             f.channel().write(Unpooled.copiedBuffer("444".getBytes()));

@@ -28,6 +28,7 @@ public class Server {
 
         try {
             //3.创建辅助类，作用是对server进行一系列的配置
+            //server用的是ServerBootstrap,client用的是Bootstrap
             ServerBootstrap b = new ServerBootstrap();
             //加入两个事件循环器，让‘boss’接收到连接后，把连接信息注册到‘worker’上
             b.group(bossGroup, workerGroup)
