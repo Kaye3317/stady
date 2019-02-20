@@ -32,7 +32,7 @@ public class Server {
             //加入两个事件循环器，让‘boss’接收到连接后，把连接信息注册到‘worker’上
             b.group(bossGroup, workerGroup)
                     //指定你是时使用哪一种ServerChannel通道进行连接
-                    //我们用的TCP所以是这个通道，其他的UDP HTTP可能就是其他通道
+                    //由于演示的是TCP所以使用的是NioServerSocketChannel，其他的UDP HTTP可能就是其他通道
                     .channel(NioServerSocketChannel.class)
                     //重要！！！！
                     //一定要使用childHandler去绑定具体是时间处理器
@@ -40,7 +40,7 @@ public class Server {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-                            //载入我们自己的ServerHandler
+                            //载入我们自己的ServerHandler，可以实例化多个处理器
                             socketChannel.pipeline().addLast(new DiscardServerHandler());
                         }
                     })

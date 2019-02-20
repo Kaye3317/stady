@@ -23,13 +23,13 @@ public class Client {
         try {
             Bootstrap b = new Bootstrap();
             b.group(worker)
-                    //客户端使用的是NioSocketChannel
+                    //由于演示的是TCP所以客户端使用的是NioSocketChannel
                     .channel(NioSocketChannel.class)
                     //server端用的childHandler但是client用的是handler
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-                            //载入我们自己的ClientHandler
+                            //载入我们自己的ClientHandler 可以实例化多个处理器
                             socketChannel.pipeline().addLast(new DiscardClientHandler());
                         }
                     });
