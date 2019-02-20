@@ -23,6 +23,7 @@ public class DiscardServerHandler extends ChannelHandlerAdapter {
             ByteBuf buf = (ByteBuf) msg;
 
             byte[] data = new byte[buf.readableBytes()];
+            //把数据从buffer读到data数组
             buf.readBytes(data);
             String s = new String(data, "utf-8");
             System.err.println("server: " + s);

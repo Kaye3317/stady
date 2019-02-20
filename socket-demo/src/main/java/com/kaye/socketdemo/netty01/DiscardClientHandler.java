@@ -20,6 +20,7 @@ public class DiscardClientHandler extends ChannelHandlerAdapter {
             //一些业务处理逻辑
             ByteBuf buf = (ByteBuf) msg;
             byte[] data = new byte[buf.readableBytes()];
+            //把数据从buffer读到data数组
             buf.readBytes(data);
             String s = new String(data, "utf-8");
             System.err.println("client: " + s);
