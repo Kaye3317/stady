@@ -62,7 +62,7 @@ public class Server {
                     //相当于设置TCP连接的缓冲区
                     .option(ChannelOption.SO_BACKLOG, 128)
                     //TCP协议配置
-                    //保持连接
+                    //保持连接 默认就是true
                     //.option(ChannelOption.SO_KEEPALIVE, true)指的是当前的server通道
                     //.childOption(ChannelOption.SO_KEEPALIVE, true)指的是以后可能程序复杂了会有的子通道
                     .option(ChannelOption.SO_KEEPALIVE, true)
