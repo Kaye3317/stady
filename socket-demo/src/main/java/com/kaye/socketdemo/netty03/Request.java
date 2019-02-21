@@ -15,29 +15,15 @@ public class Request implements Serializable {
 
     private static final long SerialVersionUID = 1L;
 
-    private int id;
-
+    private String id;
     private String name;
+    private String requestMessage;
 
-    private int num;
-
-    private byte[] files;
-
-    @Override
-    public String toString() {
-        return "Request{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", num=" + num +
-                ", files=" + Arrays.toString(files) +
-                '}';
-    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -49,19 +35,11 @@ public class Request implements Serializable {
         this.name = name;
     }
 
-    public int getNum() {
-        return num;
+    public String getRequestMessage() {
+        return requestMessage;
     }
 
-    public void setNum(int num) {
-        this.num = num;
-    }
-
-    public byte[] getFiles() {
-        return files;
-    }
-
-    public void setFiles(byte[] files) {
-        this.files = files;
+    public void setRequestMessage(String requestMessage) {
+        this.requestMessage = requestMessage;
     }
 }

@@ -14,6 +14,7 @@ import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import io.netty.handler.codec.FixedLengthFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import io.netty.handler.timeout.ReadTimeoutHandler;
 
 /**
  * netty server端
@@ -58,6 +59,8 @@ public class Server {
                             //指定字符串编码格式
                             //发送的时候也不用必须是写Buffer了可以写字符串
                             socketChannel.pipeline().addLast(new StringEncoder());
+                            //读超时设置
+                            socketChannel.pipeline().addLast(new ReadTimeoutHandler(5));
                             //指定我们自己逻辑的处理器
                             socketChannel.pipeline().addLast(new DiscardServerHandler());
                         }

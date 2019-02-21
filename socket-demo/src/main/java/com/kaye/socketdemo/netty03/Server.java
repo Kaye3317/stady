@@ -12,6 +12,7 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import io.netty.handler.timeout.ReadTimeoutHandler;
 
 /**
  * java类作用描述
@@ -21,35 +22,32 @@ import io.netty.handler.logging.LoggingHandler;
  */
 public class Server {
 
-    public static void main(String[] args) {
-        EventLoopGroup boss = new NioEventLoopGroup();
-        EventLoopGroup work = new NioEventLoopGroup();
-        ServerBootstrap bootstrapServer = new ServerBootstrap();
-        try {
-            bootstrapServer.group(boss, work)
-                    .channel(NioServerSocketChannel.class)
-                    .option(ChannelOption.SO_BACKLOG, 1024)
-                    .handler(new LoggingHandler(LogLevel.INFO))
-                    .childHandler(new ChannelInitializer<SocketChannel>() {
-                        @Override
-                        protected void initChannel(SocketChannel socketChannel) throws Exception {
-                            //添加序列化解码
-                            socketChannel.pipeline().addLast(MarshallingCodeCFactory.buildMarshallingDecoder());
-                            //添加序列化编码
-                            socketChannel.pipeline().addLast(MarshallingCodeCFactory.buildMarshallingEncoder());
-                            socketChannel.pipeline().addLast(new ServerHandler());
-                        }
-                    });
-            ChannelFuture future = bootstrapServer.bind(11111).sync();
+    public static void main(String[] args) throws Exception {
 
-            future.channel().closeFuture().sync();
+        EventLoopGroup pGroup = new NioEventLoopGroup();
+        EventLoopGroup cGroup = new NioEventLoopGroup();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            boss.shutdownGracefully();
-            work.shutdownGracefully();
-        }
+        ServerBootstrap b = new ServerBootstrap();
+        b.group(pGroup, cGroup)
+                .channel(NioServerSocketChannel.class)
+                .option(ChannelOption.SO_BACKLOG, 1024)
+                //设置日志
+                .handler(new LoggingHandler(LogLevel.INFO))
+                .childHandler(new ChannelInitializer<SocketChannel>() {
+                    protected void initChannel(SocketChannel sc) throws Exception {
+                        sc.pipeline().addLast(MarshallingCodeCFactory.buildMarshallingDecoder());
+                        sc.pipeline().addLast(MarshallingCodeCFactory.buildMarshallingEncoder());
+                        //超时handler（当服务器端与客户端在指定时间以上没有任何进行通信，则会关闭响应的通道，主要为减小服务端资源占用）
+                        sc.pipeline().addLast(new ReadTimeoutHandler(5));
+                        sc.pipeline().addLast(new ServerHandler());
+                    }
+                });
+
+        ChannelFuture cf = b.bind(8765).sync();
+
+        cf.channel().closeFuture().sync();
+        pGroup.shutdownGracefully();
+        cGroup.shutdownGracefully();
 
     }
 }

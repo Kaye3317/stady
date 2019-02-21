@@ -17,25 +17,22 @@ public class ClientHandler extends ChannelHandlerAdapter {
     }
 
     @Override
-    public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
-        super.channelRegistered(ctx);
-    }
-
-    @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         try {
-            Response response = (Response) msg;
-            System.err.println(response.toString());
-            System.err.println(132465);
-
+            Response resp = (Response)msg;
+            System.out.println("Client : " + resp.getId() + ", " + resp.getName() + ", " + resp.getResponseMessage());
         } finally {
             ReferenceCountUtil.release(msg);
         }
     }
 
+    @Override
+    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
+
+    }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        super.exceptionCaught(ctx, cause);
+        ctx.close();
     }
 }

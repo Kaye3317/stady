@@ -12,28 +12,17 @@ import java.io.Serializable;
  */
 public class Response implements Serializable {
 
-    private static final long SerialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-    private int id;
-
+    private String id;
     private String name;
+    private String responseMessage;
 
-    private int num;
-
-    @Override
-    public String toString() {
-        return "Response{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", num=" + num +
-                '}';
-    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -45,11 +34,11 @@ public class Response implements Serializable {
         this.name = name;
     }
 
-    public int getNum() {
-        return num;
+    public String getResponseMessage() {
+        return responseMessage;
     }
 
-    public void setNum(int num) {
-        this.num = num;
+    public void setResponseMessage(String responseMessage) {
+        this.responseMessage = responseMessage;
     }
 }

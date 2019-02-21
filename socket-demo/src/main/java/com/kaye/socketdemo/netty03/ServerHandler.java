@@ -17,30 +17,23 @@ public class ServerHandler extends ChannelHandlerAdapter {
     }
 
     @Override
-    public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
-        super.channelRegistered(ctx);
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        Request request = (Request)msg;
+        System.out.println("Server : " + request.getId() + ", " + request.getName() + ", " + request.getRequestMessage());
+        Response response = new Response();
+        response.setId(request.getId());
+        response.setName("response" + request.getId());
+        response.setResponseMessage("响应内容" + request.getId());
+        ctx.writeAndFlush(response);//.addListener(ChannelFutureListener.CLOSE);
     }
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        System.err.println(13213);
-        Request request = (Request) msg;
-        System.err.println(request.toString());
-
-        Response response = new Response();
-        response.setNum(5569);
-        response.setName("server1");
-        response.setId(22);
-
-        ctx.writeAndFlush(response);
-        System.err.println(132465);
-
+    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
 
     }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        cause.printStackTrace();
         ctx.close();
     }
 }
