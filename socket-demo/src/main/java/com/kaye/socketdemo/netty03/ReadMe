@@ -12,3 +12,8 @@
 1.使用StringEncoder和StringDecoder
 2.使用特殊字符拆包粘包 DelimiterBasedFrameDecoder
 3.传json字符串，由client和server解析
+
+连接的三种方式：
+1.长连接，client和server一直连接着
+2.短链接，一次性读写数据，每次读写都要建立一次连接
+3.定时长连接，只要超过一定时间没有数据传输，就断开连接，下次传数据再连接（推荐）
