@@ -1,4 +1,4 @@
-package com.kaye.socketdemo.socket01;
+package com.kaye.socketdemo.socketbio01;
 
 import java.io.BufferedReader;
 import java.io.IOException;
