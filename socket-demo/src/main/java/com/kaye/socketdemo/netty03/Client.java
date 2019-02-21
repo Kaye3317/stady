@@ -34,7 +34,7 @@ public class Client {
                             socketChannel.pipeline().addLast(MarshallingCodeCFactory.buildMarshallingDecoder());
                             //添加序列化编码
                             socketChannel.pipeline().addLast(MarshallingCodeCFactory.buildMarshallingEncoder());
-                            socketChannel.pipeline().addLast(new ReadTimeoutHandler(5));
+//                            socketChannel.pipeline().addLast(new ReadTimeoutHandler(5));
                             socketChannel.pipeline().addLast(new ClientHandler());
                         }
                     });

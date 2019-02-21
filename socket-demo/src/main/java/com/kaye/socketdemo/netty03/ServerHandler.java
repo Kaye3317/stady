@@ -23,9 +23,9 @@ public class ServerHandler extends ChannelHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        System.err.println(13213);
         Request request = (Request) msg;
         System.err.println(request.toString());
-        System.err.println(13213);
 
         Response response = new Response();
         response.setNum(5569);
