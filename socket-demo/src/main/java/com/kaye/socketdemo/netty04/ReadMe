@@ -1,0 +1,28 @@
+关于netty重点！！！
+心跳监测
+使用sigar去获取操作系统的数据和平台的数据（硬件、软件数据）；
+可以手机一下数据
+    CPU信息：包括基本信息（vendor、model、mhz、cacheSize）和统计信息（user、sys、idle、nice、wait）
+    文件系统信息：包括Filesystem、Size、Used、Avail、Use%、Type
+    事件信息：类似Service Control Manager
+    内存信息：物理内存和交换内存的总数、使用数、剩余数；RAM的大小
+    网络信息：包括网络接口信息和网络路由信息
+    进程信息：包括每个进程的内存、CPU占用数、状态、参数、句柄
+    IO信息：包括IO的状态，读写大小等
+    服务状态信息
+    系统信息：包括操作系统版本，系统资源限制情况，系统运行时间以及负载，JAVA的版本信息等
+
+下载地址：
+使用方式：
+1.在自己的Java项目中引入sigar.jar
+----------
+<dependency>
+    <groupId>org.fusesource</groupId>
+    <artifactId>sigar</artifactId>
+    <version>1.6.4</version>
+</dependency>
+----------
+2.同时将对应的dll文件或者so文件添加到系统目录。例如：windows下把sigar-x86-winnt.dll添加到c:\WINDOWS\system32或者jdk的bin目录。
+使用System.out.println(System.getProperties().getProperty("java.library.path"));查看jdk安装在哪儿
+3.dll文件下载地址：http://sourceforge.net/projects/sigar/files/
+4.文档下载地址：https://support.hyperic.com/display/SIGAR/Home
