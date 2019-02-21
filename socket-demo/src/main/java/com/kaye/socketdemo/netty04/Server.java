@@ -41,7 +41,7 @@ public class Server {
                             socketChannel.pipeline().addLast(new DelimiterBasedFrameDecoder(1024, buf));
                             socketChannel.pipeline().addLast(new StringEncoder());
                             socketChannel.pipeline().addLast(new StringDecoder());
-                            socketChannel.pipeline().addLast(new ReadTimeoutHandler(5));
+                            //socketChannel.pipeline().addLast(new ReadTimeoutHandler(10));
                             socketChannel.pipeline().addLast(new DiscardServerHandler());
                         }
                     });

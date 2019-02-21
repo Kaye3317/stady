@@ -1,5 +1,8 @@
 关于netty重点！！！
 心跳监测
+用到了ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);线程池的定时执行
+模拟认证和服务间的心跳
+
 使用sigar去获取操作系统的数据和平台的数据（硬件、软件数据）；
 可以手机一下数据
     CPU信息：包括基本信息（vendor、model、mhz、cacheSize）和统计信息（user、sys、idle、nice、wait）

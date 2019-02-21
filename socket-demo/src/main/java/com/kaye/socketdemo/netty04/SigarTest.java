@@ -8,6 +8,10 @@ import org.hyperic.sigar.cmd.CpuInfo;
 import org.hyperic.sigar.cmd.Shell;
 import org.hyperic.sigar.cmd.SigarCommandBase;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+
 /**
  * 使用sigar获取平台软硬件数据
  * 以下例子获取了cpu的数据

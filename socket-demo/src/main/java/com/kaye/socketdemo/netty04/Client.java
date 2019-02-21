@@ -40,7 +40,7 @@ public class Client {
                         socketChannel.pipeline().addLast(new StringEncoder());
                         socketChannel.pipeline().addLast(new StringDecoder());
                         //读超时设置
-                        socketChannel.pipeline().addLast(new ReadTimeoutHandler(5));
+                        //socketChannel.pipeline().addLast(new ReadTimeoutHandler(10));
                         socketChannel.pipeline().addLast(new DiscardClientHandler());
                     }
                 });
@@ -64,7 +64,7 @@ public class Client {
         }
     }
 
-    public ChannelFuture getChannelFuture(){
+    public ChannelFuture getChannelFuture() {
         if (f == null) {
             connect();
         }
@@ -78,12 +78,7 @@ public class Client {
         Client client = Client.getInstance();
         client.connect();
         ChannelFuture cf = client.getChannelFuture();
-        cf.channel().writeAndFlush("client 传输了一条数据1$_");
-        cf.channel().writeAndFlush("client 传输了一条数据2$_654$_");
-
         cf.channel().closeFuture().sync();
-
-
     }
 
 
